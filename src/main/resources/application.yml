@@ -1,0 +1,20 @@
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+  profiles:
+    # Use 'mcp' profile for MCP Inspector/Claude Desktop (logs to file only, stdout clean)
+    # Remove or change to 'default' to see logs in console (stderr)
+    active: mcp
+  ai:
+    mcp:
+      server:
+        name: mysql-mcp-server
+        version: 1.0.0
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:}
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 10000

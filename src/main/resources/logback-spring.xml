@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Use this logback config when running with MCP Inspector or Claude Desktop.
+  It disables console logging to keep stdout clean for MCP JSON-RPC protocol.
+  
+  To activate: set spring.profiles.active=mcp in application.yml or via env var
+  Or rename this file to logback-spring.xml and remove the profile wrapper
+-->
+<configuration>
+    <!-- mcp profile: logs to file only (stdout/stderr clean for MCP protocol) -->
+    <springProfile name="mcp">
+        <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            <file>./mysql-mcp-server.log</file>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="FILE" />
+        </root>
+    </springProfile>
+
+    <!-- default profile: logs to stderr (visible in terminal) -->
+    <springProfile name="!mcp">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <target>System.err</target>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+</configuration>
