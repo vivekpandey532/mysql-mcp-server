@@ -10,7 +10,13 @@ spring:
     mcp:
       server:
         name: mysql-mcp-server
-        version: 1.0.0
+        capabilities:
+          tool: true
+          resource: true
+          prompt: true
+          completion: false
+        annotation-scanner:
+          enabled: true
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}
     username: ${MYSQL_USER:root}

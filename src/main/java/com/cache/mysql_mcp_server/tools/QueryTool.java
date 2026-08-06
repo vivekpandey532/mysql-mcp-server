@@ -1,38 +1,24 @@
 package com.cache.mysql_mcp_server.tools;
 
 import com.cache.mysql_mcp_server.service.MySqlService;
-import org.springframework.ai.tool.annotation.Tool;
-import org.springframework.ai.tool.annotation.ToolParam;
+import org.springframework.ai.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
-/**
- * MCP tool for executing SELECT SQL queries against the MySQL database.
- */
 @Component
 public class QueryTool {
 
     private final MySqlService mySqlService;
 
-    /**
-     * Constructs a new QueryTool with the given MySqlService.
-     *
-     * @param mySqlService the service for MySQL operations
-     */
     public QueryTool(MySqlService mySqlService) {
         this.mySqlService = mySqlService;
     }
 
-    /**
-     * Executes a SELECT SQL query and returns results in a formatted table string.
-     *
-     * @param sql the SELECT SQL query to execute
-     * @return formatted string with column headers and row data, or error message on failure
-     */
-    @Tool(description = "Execute a SELECT SQL query against the MySQL database and return results")
-    public String query(@ToolParam(description = "The SELECT SQL query to execute") String sql) {
+    @McpTool(description = "Execute a SELECT SQL query against the MySQL database and return results")
+    public String query(@McpToolParam(description = "The SELECT SQL query to execute") String sql) {
         try {
             List<Map<String, Object>> results = mySqlService.executeQuery(sql);
             if (results.isEmpty()) return "No results found.";
