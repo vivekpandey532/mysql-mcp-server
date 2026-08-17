@@ -1,0 +1,21 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "MySQL MCP Server",
+  "description": "Documentation for a Model Context Protocol (MCP) server that exposes MySQL database operations as tools for AI agents.",
+  "colors": {
+    "primary": "#3B82F6",
+    "light": "#3B82F6",
+    "dark": "#60A5FA"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Documentation",
+        "pages": [
+          "Pasted markdown"
+        ]
+      }
+    ]
+  }
+}
