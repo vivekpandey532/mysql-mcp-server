@@ -1,0 +1,39 @@
+---
+title: "Pasted markdown"
+description: "A Model Context Protocol (MCP) server that exposes MySQL database operations as tools for AI agents."
+---
+
+## Overview
+
+**MySQL MCP Server** is a [Model Context Protocol](https://modelcontextprotocol.io) server that exposes MySQL database operations as tools, allowing AI agents (Claude, Amazon Q, and others) to interact with MySQL databases through a standardized protocol. Communication happens via JSON-RPC messages over stdio.
+
+## Features
+
+- Query and inspect MySQL databases through a standardized MCP interface
+- Compatible with any MCP-enabled AI agent
+- Simple stdio-based JSON-RPC transport
+- Built on Java 21 and Maven for cross-platform support
+
+## Prerequisites
+
+| Dependency | Version | Purpose |
+| --- | --- | --- |
+| Java (JDK) | 21\+ | Run the MCP server |
+| Maven | 3.8\+ | Build the project |
+| MySQL | 8.0\+ | Database |
+| Node.js | 18\+ | Run MCP Inspector |
+
+## Quickstart
+
+1. Install the prerequisites listed above.
+2. Clone the repository and build with Maven:
+   ```bash
+   mvn clean package
+   ```
+3. Configure your MySQL connection settings.
+4. Register the server with your MCP-compatible AI agent.
+
+## Next steps
+
+- Review the architecture and design details in `DESIGN.md`.
+- Explore available tools and JSON-RPC methods exposed by the server.
